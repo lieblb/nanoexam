@@ -1,0 +1,16 @@
+<!-- Components info: https://webdev.dartlang.org/components -->
+<p *ngIf="exams.isEmpty">
+  No exams available.
+</p>
+
+<div *ngIf="exams.isNotEmpty">
+  Please pick your exam.
+  <ul>
+      <li *ngFor="let exam of exams">
+        <span>{{exam.name}}</span>
+        <material-fab mini (trigger)="startExam(exam.id)">
+            <material-icon icon="play_circle_outline"></material-icon>
+        </material-fab>
+      </li>
+  </ul>
+</div>

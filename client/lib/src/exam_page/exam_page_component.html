@@ -1,0 +1,6 @@
+<div *ngFor="let item of page.items">
+    <div *ngIf="item.questionType == SingleChoice">
+        <single-choice-question [item]="item" [answerModel]="answerModel"></single-choice-question>
+    </div>
+</div>
+

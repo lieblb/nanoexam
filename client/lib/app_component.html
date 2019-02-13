@@ -1,0 +1,80 @@
+<div *ngIf="isInWelcomeStage">
+    <material-button [visible]="isInAdminMode"
+         (trigger)="toggleAdminMode()" layout-align="end center">Administration</material-button>
+
+    <div class="content">
+        <div *ngIf="!isInAdminMode">
+            <exam-list (startExamRequest)="startExam($event)"></exam-list>
+        </div>
+        <div *ngIf="isInAdminMode">
+            <exam-admin-page></exam-admin-page>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isInFinishedStage">
+    <h3>Ihr Ergebnis</h3>
+
+    <exam-results [pages]="pages" [passId]="activePassId"></exam-results>
+</div>
+
+<div *ngIf="isInTestStage">
+    <h3>{{activeExamName}}<span style="float:right">Seite {{currentPageIndex + 1}} von {{pages.length}}</span></h3>
+
+    <hr>
+
+    <div layout="row">
+        <material-button [disabled]="currentPageIndex < 1"
+                         (trigger)="previousQuestion()" layout-align="end center">Zurück</material-button>
+        <material-button [disabled]="currentPageIndex >= pages.length - 1"
+                         (trigger)="nextQuestion()" layout-align="end center">Weiter</material-button>
+        <material-button [visible]="currentPageIndex >= pages.length - 1"
+                         (trigger)="finishTest()" layout-align="end center">Test beenden</material-button>
+        <exam-clock
+                [startTime]="startTime"
+                [maxDuration]="maxAllowedDuration">
+        </exam-clock>
+    </div>
+
+    <hr>
+
+    <exam-page [page]="pages[currentPageIndex]" [answerModel]="answerModel"></exam-page>
+
+    <modal [visible]="askFinishTest">
+        <material-dialog class="basic-dialog">
+
+            <h1 header>Test beenden</h1>
+
+            <p>
+                Sind Sie wirklich sicher, dass Sie den Test beenden wollen?
+            </p>
+
+            <div footer>
+                <material-yes-no-buttons
+                    (yes)="confirmFinishTest()"
+                    (no)="askFinishTest = false"
+                    escCancels>
+                </material-yes-no-buttons>
+            </div>
+
+        </material-dialog>
+    </modal>
+</div>
+
+<modal [visible]="failedToStartErr">
+    <material-dialog class="basic-dialog">
+
+        <h1 header>Start fehlgeschlagen</h1>
+
+        <p>
+            Bitte wenden Sie sich an Ihren Administrator.
+        </p>
+
+        <div footer>
+            <material-button (trigger)="failedToStartErr = false">OK</material-button>
+        </div>
+
+    </material-dialog>
+</modal>
+
+{{debug}}

@@ -1,0 +1,19 @@
+name: server
+description: A server for nanoexam.
+version: 0.0.1
+author: stable|kernel <jobs@stablekernel.com>
+
+environment:
+  sdk: ">=2.0.0 <3.0.0"
+
+dependencies:
+  aqueduct: ^3.0.0
+  archive: ^2.0.4
+  xml2json: ^3.0.3
+  decimal: ^0.3.0
+  qti:
+    path: ../qti
+
+dev_dependencies:
+  test: ^1.0.0
+  aqueduct_test: ^1.0.0

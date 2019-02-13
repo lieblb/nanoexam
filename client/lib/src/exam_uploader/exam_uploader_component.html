@@ -1,0 +1,16 @@
+<div>
+    <ul>
+        <li>
+            <material-icon icon="play_circle_outline"></material-icon>
+            <form #form enctype="multipart/form-data">
+                <input class="inputfile" id="file" type="file" #upload name='file' (change)="uploadFiles(upload)">
+                <label for="file">Upload a new exam
+                    <span></span></label>
+            </form>
+        </li>
+    </ul>
+    <div *ngIf="isUploadRunning">
+        <material-progress [activeProgress]="progress">
+        </material-progress>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<!-- Components info: https://webdev.dartlang.org/components -->
+
+<h2>{{title}}</h2>
+
+<div *ngFor="let element of item.presentation.elements">
+    <div *ngIf="element.isMaterial">
+        <div [safeInnerHtml]="dss.bypassSecurityTrustHtml(element.toHtml())"></div>
+    </div>
+    <div *ngIf="element.isResponseLid">
+        <material-radio-group [ngModel]="selected[element.ident]" (ngModelChange)="changeAnswer(element.ident, $event)">
+            <ul>
+                <li *ngFor="let label of element.labels">
+                    <material-radio class="radio-per-line" [value]="label.ident" no-ink>
+                        <span>{{label.toHtml()}}</span>
+                    </material-radio>
+                </li>
+            </ul>
+        </material-radio-group>
+    </div>
+</div>
+
+<div *ngIf="debug != null && debug.length > 0" class="debug-info">
+    {{debug}}
+</div>

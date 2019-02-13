@@ -1,0 +1,17 @@
+<p *ngIf="exams.isEmpty">
+    No exams available.
+</p>
+
+<div *ngIf="exams.isNotEmpty">
+    <ul>
+        <li *ngFor="let exam of exams">
+            <span>{{exam.name}}</span>
+            <!-- <material-spinner></material-spinner> -->
+            <material-fab mini (trigger)="deleteExam(exam.id)">
+                <material-icon icon="delete_forever"></material-icon>
+            </material-fab>
+        </li>
+    </ul>
+</div>
+
+<exam-uploader (uploadExamComplete)="examUploaded()"></exam-uploader>

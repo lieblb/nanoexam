@@ -1,0 +1,5 @@
+username: dev_nanoexam
+password: dev_nanoexam
+host: localhost
+port: 5432
+databaseName: dev_nanoexam

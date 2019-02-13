@@ -1,0 +1,26 @@
+<table mat-table id="results_table">
+    <thead>
+        <td>Nummer</td>
+        <td>Fragetitel</td>
+        <td>Maximale Punktzahl</td>
+        <td>Erreichte Punktzahl</td>
+        <td>Prozent</td>
+    </thead>
+    <tr mat-row *ngFor="let item of items; let i = index">
+        <td>{{i + 1}}</td>
+        <td>{{item.title}}</td>
+        <td>{{maximumScoreForQuestion(item.ident)}}</td>
+        <td>{{reachedScoreForQuestion(item.ident)}}</td>
+        <td>{{questionScoreAsPercentage(item.ident)}}</td>
+    </tr>
+    <tr>
+    </tr>
+    <tr mat-row *ngIf="totalScore != null" id="final_result_row">
+        <td>Insgesamt</td>
+        <td></td>
+        <td>{{totalScore.maximum.toString()}}</td>
+        <td>{{totalScore.reached.toString()}}</td>
+        <td>{{totalScore.percentage}}</td>
+        <td></td>
+    </tr>
+</table>

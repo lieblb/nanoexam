@@ -1,0 +1,14 @@
+name: qti
+description: A library for dealing with QTI.
+version: 0.0.1
+author: Bernhard Liebl
+
+environment:
+  sdk: ">=2.0.0 <3.0.0"
+
+dependencies:
+  xml: ^3.2.3
+  decimal: ^0.3.0
+
+dev_dependencies:
+  test: ^1.0.0
