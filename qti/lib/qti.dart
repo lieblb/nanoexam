@@ -405,9 +405,9 @@ class Assessment {
     if (int.tryParse(metadata["enable_processing_time"]) == 1) {
       final re = RegExp(r"^(\d\d):(\d\d):(\d\d)$");
       final match = re.allMatches(metadata["processing_time"]);
-      final h = match.first.group(1) as int;
-      final m = match.first.group(2) as int;
-      final s = match.first.group(3) as int;
+      final h = int.parse(match.first.group(1));
+      final m = int.parse(match.first.group(2));
+      final s = int.parse(match.first.group(3));
       return h * 3600 + m * 60 + s;
     } else {
       return 0;
