@@ -13,7 +13,9 @@ Now call `http://localhost:8888/exam/`.
 
 ## Uploading exams
 
-You need an QTI exam for testing. Upload via POST on `/v1/exams`.
+You need an QTI exam for testing. You can upload a zip file exported from ILIAS through the
+Administration UI and then clicking "Upload a new exam". Currently only single choice questions
+are supported.
 
 ## Setting up postgresql for testing
 
